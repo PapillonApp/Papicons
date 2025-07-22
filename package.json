@@ -1,0 +1,126 @@
+{
+  "name": "papicons",
+  "version": "0.1.0",
+  "description": "A butterfly icon set for React Native",
+  "main": "./lib/module/index.js",
+  "types": "./lib/typescript/src/index.d.ts",
+  "exports": {
+    ".": {
+      "source": "./src/index.tsx",
+      "types": "./lib/typescript/src/index.d.ts",
+      "default": "./lib/module/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "lib",
+    "android",
+    "ios",
+    "cpp",
+    "*.podspec",
+    "react-native.config.js",
+    "!ios/build",
+    "!android/build",
+    "!android/gradle",
+    "!android/gradlew",
+    "!android/gradlew.bat",
+    "!android/local.properties",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__",
+    "!**/.*"
+  ],
+  "scripts": {
+    "typecheck": "tsc",
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "clean": "del-cli lib",
+    "build": "bob build",
+    "icons:build": "mkdir -p src/icons && npx @svgr/cli --out-dir src/icons --jsx-runtime automatic --native --no-dimensions --typescript ./icons",
+    "icons:clean": "rm -rf src/icons"
+  },
+  "keywords": [
+    "react-native",
+    "icons",
+    "svg"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PapillonApp/papicons.git"
+  },
+  "author": "PapillonApp <support@papillon.bzh> (https://github.com/PapillonApp)",
+  "bugs": {
+    "url": "https://github.com/PapillonApp/papicons/issues"
+  },
+  "homepage": "https://github.com/PapillonApp/papicons#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^19.6.0",
+    "@eslint/compat": "^1.2.7",
+    "@eslint/eslintrc": "^3.3.0",
+    "@eslint/js": "^9.22.0",
+    "@evilmartians/lefthook": "^1.5.0",
+    "@react-native/babel-preset": "0.78.2",
+    "@react-native/eslint-config": "^0.78.0",
+    "@release-it/conventional-changelog": "^9.0.2",
+    "@svgr/cli": "^8.1.0",
+    "@types/react": "^19.0.12",
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "commitlint": "^19.6.1",
+    "del-cli": "^5.1.0",
+    "eslint": "^9.22.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-ft-flow": "^3.0.11",
+    "eslint-plugin-jest": "^29.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-native": "^5.0.0",
+    "prettier": "^3.6.2",
+    "react": "^19.0.0",
+    "react-native": "^0.79.5",
+    "react-native-builder-bob": "^0.40.13",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "workspaces": [
+    "example"
+  ],
+  "prettier": {
+    "quoteProps": "consistent",
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "useTabs": false
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      [
+        "module",
+        {
+          "esm": true
+        }
+      ],
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
+      ]
+    ]
+  },
+  "create-react-native-library": {
+    "languages": "ts",
+    "type": "library",
+    "version": "0.52.0"
+  },
+  "dependencies": {
+    "react-native-svg": "^15.12.0"
+  }
+}
