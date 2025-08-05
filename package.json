@@ -1,5 +1,5 @@
 {
-  "name": "papicons",
+  "name": "@getpapillon/papicons",
   "version": "0.1.0",
   "description": "A butterfly icon set for React Native",
   "main": "./lib/module/index.js",
@@ -13,23 +13,8 @@
     "./package.json": "./package.json"
   },
   "files": [
-    "src",
-    "lib",
-    "android",
-    "ios",
-    "cpp",
-    "*.podspec",
-    "react-native.config.js",
-    "!ios/build",
-    "!android/build",
-    "!android/gradle",
-    "!android/gradlew",
-    "!android/gradlew.bat",
-    "!android/local.properties",
-    "!**/__tests__",
-    "!**/__fixtures__",
-    "!**/__mocks__",
-    "!**/.*"
+    "lib/module",
+    "lib/typescript"
   ],
   "scripts": {
     "typecheck": "tsc",
