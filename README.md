@@ -1,9 +1,10 @@
-<p style="text-align: center">
-<img src=".github/assets/logotype.svg" alt="Papicons Logo" width="400">
+<p align="center">
+  <img src="https://github.com/PapillonApp/Papicons/raw/main/.github/assets/logotype.svg" alt="Papicons" width="400">
 </p>
-
-## Papicons
+<p align="center">
 Papicons is a collection of icons designed by Tom Things for Papillon.
+</p>
+<br/>
 
 ## Installation
 
