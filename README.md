@@ -32,7 +32,7 @@ import { Butterfly } from 'papicons';
 const App = () => {
   return (
     <View>
-      <Butterfly width={50} height={50} fill={"#0042DC"}/>
+      <Butterfly size={50} color={"#0042DC"}/>
     </View>
   );
 };

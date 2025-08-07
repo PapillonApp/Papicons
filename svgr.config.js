@@ -1,8 +1,8 @@
 module.exports = {
   template: require('./dist/scripts/exportTemplate'),
   typescript: true,
-  noDimensions: true,
   native: true,
-  jsxRuntime: 'automatic',
+  jsxRuntime: 'classic',
   outDir: './src/icons',
+  dimensions: true
 };

@@ -13,7 +13,7 @@ export default function App() {
           const IconComponent = Papicons[iconName as keyof typeof Papicons];
           return (
             <View style={styles.card} key={iconName}>
-              <IconComponent width={size} height={size} fill={color} />
+              <IconComponent size={size} color={color} />
             </View>
           );
         })}
