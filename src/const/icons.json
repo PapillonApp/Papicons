@@ -1,0 +1,254 @@
+[
+	{
+		"name": "System",
+		"icon": "search",
+		"icons": [
+			{
+				"name":  "arrow-left",
+				"jsx": "<ArrowLeft />"
+			},
+			{
+				"name": "arrow-right",
+				"jsx": "<ArrowRight />"
+			},
+			{
+				"name": "arrow-up",
+				"jsx": "<ArrowUp />"
+			},
+			{
+				"name": "arrow-down",
+				"jsx": "<ArrowDown />"
+			},
+			{
+				"name": "chevron-left",
+				"jsx": "<ChevronLeft />"
+			},
+			{
+				"name": "chevron-right",
+				"jsx": "<ChevronRight />"
+			},
+			{
+				"name": "chevron-up",
+				"jsx": "<ChevronUp />"
+			},
+			{
+				"name": "chevron-down",
+				"jsx": "<ChevronDown />"
+			},
+			{
+				"name": "arrow-right-up",
+				"jsx": "<ArrowRightUp />"
+			},
+			{
+				"name": "search",
+				"jsx": "<Search />"
+			},
+			{
+				"name": "cross",
+				"jsx": "<Cross />"
+			},
+			{
+				"name": "add",
+				"jsx": "<Add />"
+			},
+			{
+				"name": "qr-code",
+				"jsx": "<QrCode />"
+			},
+			{
+				"name": "link",
+				"jsx": "<Link />"
+			},
+			{
+				"name": "clock",
+				"jsx": "<Clock />"
+			},
+			{
+				"name": "info",
+				"jsx": "<Info />"
+			},
+			{
+				"name": "star",
+				"jsx": "<Star />"
+			},
+			{
+				"name": "check",
+				"jsx": "<Check />"
+			},
+			{
+				"name": "external-link",
+				"jsx": "<ExternalLink />"
+			},
+			{
+				"name": "gears",
+				"jsx": "<Gears />"
+			},
+			{
+				"name": "menu",
+				"jsx": "<Menu />"
+			},
+			{
+				"name": "minus",
+				"jsx": "<Minus />"
+			},
+			{
+				"name": "plus",
+				"jsx": "<Plus />"
+			},
+			{
+				"name": "list",
+				"jsx": "<List />"
+			},
+			{
+				"name": "color-theme",
+				"jsx": "<ColorTheme />"
+			}
+		]
+	},
+	{
+		"name": "Utilities",
+		"icon": "calendar",
+		"icons": [
+			{
+				"name": "home",
+				"jsx": "<Home />"
+			},
+			{
+				"name": "tasks",
+				"jsx": "<Tasks />"
+			},
+			{
+				"name": "calendar",
+				"jsx": "<Calendar />"
+			},
+			{
+				"name": "pie",
+				"jsx": "<Pie />"
+			},
+			{
+				"name": "grades",
+				"jsx": "<Grades />"
+			},
+			{
+				"name": "cutlery",
+				"jsx": "<Cutlery />"
+			},
+			{
+				"name": "card",
+				"jsx": "<Card />"
+			},
+			{
+				"name": "sparkles",
+				"jsx": "<Sparkles />"
+			},
+			{
+				"name": "accessibility",
+				"jsx": "<Accessibility />"
+			},
+			{
+				"name": "filter",
+				"jsx": "<Filter />"
+			}
+		]
+	},
+	{
+		"name": "Communication",
+		"icon": "text-bubble",
+		"icons": [
+			{
+				"name":  "user",
+				"jsx": "<User />"
+			},
+			{
+				"name": "text-bubble",
+				"jsx": "<TextBubble />"
+			},
+			{
+				"name": "newspaper",
+				"jsx": "<Newspaper />"
+			},
+			{
+				"name": "bell",
+				"jsx": "<Bell />"
+			}
+		]
+	},
+	{
+		"name": "Map",
+		"icon": "map-pin",
+		"icons": [
+			{
+				"name":  "map-pin",
+				"jsx": "<MapPin />"
+			}
+		]
+	},
+	{
+		"name": "Education",
+		"icon": "chair",
+		"icons": [
+			{
+				"name": "pillar",
+				"jsx": "<Pillar />"
+			},
+			{
+				"name": "chair",
+				"jsx": "<Chair />"
+			},
+			{
+				"name": "pen",
+				"jsx": "<Pen />"
+			},
+			{
+				"name": "graduation-hat",
+				"jsx": "<GraduationHat />"
+			},
+			{
+				"name": "coefficient",
+				"jsx": "<Coefficient />"
+			}
+		]
+	},
+	{
+		"name": "Other",
+		"icon": "sun",
+		"icons": [
+			{
+				"name": "butterfly",
+				"jsx": "<Butterfly />"
+			},
+			{
+				"name": "sun",
+				"jsx": "<Sun />"
+			},
+			{
+				"name": "sunrise",
+				"jsx": "<Sunrise />"
+			},
+			{
+				"name": "ghost",
+				"jsx": "<Ghost />"
+			},
+			{
+				"name": "heart",
+				"jsx": "<Heart />"
+			},
+			{
+				"name": "palette",
+				"jsx": "<Palette />"
+			},
+			{
+				"name": "apple",
+				"jsx": "<Apple />"
+			},
+			{
+				"name": "placeholder",
+				"jsx": "<Placeholder />"
+			},
+			{
+				"name": "moon",
+				"jsx": "<Moon />"
+			}
+		]
+	}
+]
