@@ -22,6 +22,12 @@ module.exports = {
           attrs: '(fill|stroke)',
         },
       },
+      {
+        name: 'removeXMLNS',
+        params: {
+          xmlns: true,
+        },
+      }
     ],
   }
 };
