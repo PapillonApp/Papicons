@@ -5,15 +5,18 @@ import * as Papicons from 'papicons';
 export default function App() {
   const [color, setColor] = useState('#000');
   const [size, setSize] = useState<number | undefined>(50);
+  const [opacity, setOpacity] = useState<number>(1);
 
   return (
     <View style={styles.flex}>
+      <Papicons.Papicons name="Chair" size={80}/>
+      <Papicons.Papicons name={"Accessibility"} size={80}/>
       <ScrollView style={styles.flex} contentContainerStyle={styles.container}>
         {Object.keys(Papicons).map((iconName) => {
           const IconComponent = Papicons[iconName as keyof typeof Papicons];
           return (
             <View style={styles.card} key={iconName}>
-              <IconComponent size={size} color={color} />
+              <IconComponent size={size} color={color} opacity={opacity}/>
             </View>
           );
         })}
@@ -36,6 +39,12 @@ export default function App() {
           setSize(undefined);
         }}
       />
+      <Button
+        title={'Change Opacity'}
+        onPress={() => {
+          setOpacity(opacity === 1 ? 0.5 : 1);
+        }}
+      />
     </View>
   );
 }
@@ -43,6 +52,7 @@ export default function App() {
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
+    marginTop: 40,
   },
   container: {
     flex: 3,
