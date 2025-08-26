@@ -16,7 +16,9 @@
     "react-dom": "19.0.0",
     "react-native": "0.79.5",
     "react-native-web": "~0.20.0",
-    "papicons": "file:../"
+    "papicons": "file:../",
+    "react-native-safe-area-context": "5.4.0",
+    "@react-native-community/slider": "4.5.6"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
