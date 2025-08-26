@@ -46,7 +46,7 @@ const PapiconsExample = () => {
               borderWidth: 2,
               borderRadius: 16,
               width: '21%',
-              aspectRatio: 1,
+              aspectRatio: 0.9,
             }}
             key={iconName}
           >
@@ -56,6 +56,7 @@ const PapiconsExample = () => {
               color={color}
               opacity={opacity}
             />
+            <Text style={{fontSize: 10, opacity: 0.5, textAlign: "center", marginTop: 5}}>{iconName}</Text>
           </View>
         ))}
       </ScrollView>
