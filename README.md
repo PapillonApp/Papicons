@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/PapillonApp/Papicons/raw/main/.github/assets/logotype.svg" alt="Papicons" width="400">
+  <img src="https://github.com/PapillonApp/Papicons/blob/react-native/.github/assets/logotype.svg" alt="Papicons" width="400">
 </p>
 <p align="center">
 Papicons is a collection of icons designed by Tom Things for Papillon.
