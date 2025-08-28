@@ -56,5 +56,5 @@ npm run icons:build
 
 ## License
 
-Not known yet. Considering this to privately owned by Papillon for now.
+This repository, including the icons and the website, is licensed under the [MIT License](./LICENSE).
 
