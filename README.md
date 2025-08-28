@@ -11,13 +11,13 @@ Papicons is a collection of icons designed by Tom Things for Papillon.
 You can use Papicons in your React Native project by installing the package via npm or yarn:
 
 ```bash
-npm install papicons
+npm install @getpapillon/papicons
 ```
 
 or
 
 ```bash
-yarn add papicons
+yarn add @getpapillon/papicons
 ```
 
 ## Usage
