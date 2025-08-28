@@ -1,6 +1,6 @@
 {
   "name": "@getpapillon/papicons",
-  "version": "0.1.2",
+  "version": "0.1.5",
   "description": "A butterfly icon set for React Native",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
@@ -21,7 +21,7 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli lib",
     "build": "bob build",
-    "icons:build": "tsc scripts/exportTemplate.ts --outDir dist/scripts && mkdir -p src/icons && npx @svgr/cli --config-file svgr.config.js ./icons",
+    "icons:build": "tsc scripts/exportTemplate.ts --outDir dist/scripts && tsc scripts/indexTemplate.ts --outDir dist/scripts && mkdir -p src/icons && npx @svgr/cli --config-file svgr.config.js --index-template ./dist/scripts/indexTemplate ./icons",
     "icons:clean": "rm -rf src/icons"
   },
   "keywords": [

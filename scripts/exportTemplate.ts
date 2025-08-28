@@ -42,6 +42,7 @@ const PapiconsTemplate: Template = (variables, { tpl }) => {
   setOrUpdateAttribute(svgNode, 'width', t.jsxExpressionContainer(t.identifier('props.size ?? props.width ?? 24')));
   setOrUpdateAttribute(svgNode, 'height', t.jsxExpressionContainer(t.identifier('props.size ?? props.height ?? 24')));
   setOrUpdateAttribute(svgNode, 'fill', t.jsxExpressionContainer(t.identifier('props.color ?? props.fill ?? "currentColor"')));
+  setOrUpdateAttribute(svgNode, 'style', t.jsxExpressionContainer(t.identifier('[{ opacity: props.opacity ?? 1 }, props.style]')));
 
   const template = tpl`
 ${variables.imports};

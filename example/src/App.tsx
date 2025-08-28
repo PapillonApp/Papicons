@@ -1,63 +1,142 @@
 import { useState } from 'react';
-import { View, StyleSheet, ScrollView, Button } from 'react-native';
+import { View, ScrollView, Image, Text, TouchableOpacity } from 'react-native';
 import * as Papicons from 'papicons';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Palette, Pen, Placeholder } from 'papicons';
 
-export default function App() {
+const PapiconsExample = () => {
+  const insets = useSafeAreaInsets();
+
   const [color, setColor] = useState('#000');
   const [size, setSize] = useState<number | undefined>(50);
+  const [opacity, setOpacity] = useState<number>(1);
 
   return (
-    <View style={styles.flex}>
-      <ScrollView style={styles.flex} contentContainerStyle={styles.container}>
-        {Object.keys(Papicons).map((iconName) => {
-          const IconComponent = Papicons[iconName as keyof typeof Papicons];
-          return (
-            <View style={styles.card} key={iconName}>
-              <IconComponent size={size} color={color} />
-            </View>
-          );
-        })}
+    <View style={{ backgroundColor: '#fff', flex: 1 }}>
+      <View
+        style={{
+          height: insets.top + 70,
+          borderBottomWidth: 2,
+          borderBottomColor: '#EEE',
+          paddingTop: insets.top,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Image source={require('../assets/papicons.png')}
+               style={{ height: 25 }}
+               resizeMode={'contain'}
+        />
+      </View>
+      <ScrollView
+        contentContainerStyle={{
+          padding: 16,
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          gap: 16,
+          alignItems: 'center',
+        }}
+      >
+        {Object.keys(Papicons.IconNames).map((iconName) => (
+          <View
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderColor: '#EEE',
+              borderWidth: 2,
+              borderRadius: 16,
+              width: '21%',
+              aspectRatio: 0.9,
+            }}
+            key={iconName}
+          >
+            <Papicons.Papicons
+              name={iconName}
+              size={size}
+              color={color}
+              opacity={opacity}
+            />
+            <Text style={{fontSize: 10, opacity: 0.5, textAlign: "center", marginTop: 5}}>{iconName}</Text>
+          </View>
+        ))}
       </ScrollView>
-      <Button
-        title={'Change Color'}
-        onPress={() => {
-          setColor(color === '#000' ? '#f00' : '#000');
+      <View
+        style={{
+          height: insets.bottom + 80,
+          borderTopWidth: 2,
+          borderTopColor: '#EEE',
+          paddingBottom: insets.bottom,
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
-      />
-      <Button
-        title={'Change Size'}
-        onPress={() => {
-          setSize(size === 50 ? 24 : 50);
-        }}
-      />
-      <Button
-        title={'Unset size'}
-        onPress={() => {
-          setSize(undefined);
-        }}
-      />
+      >
+        <ScrollView
+          style={{ flex: 1, width: '100%' }}
+          horizontal
+          contentContainerStyle={{ padding: 16, flexDirection: "row", gap: 10 }}
+          showsHorizontalScrollIndicator={false}
+        >
+          <TouchableOpacity
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderColor: '#EEE',
+              borderWidth: 2,
+              padding: 8,
+              paddingHorizontal: 16,
+              flexDirection: "row",
+              gap: 8,
+              borderRadius: 32,
+            }}
+            onPress={() => setSize(size === 32 ? 50 : 32)}
+          >
+            <Placeholder size={32}/>
+            <Text style={{fontSize: 18}}>Size</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderColor: '#EEE',
+              borderWidth: 2,
+              padding: 8,
+              paddingHorizontal: 16,
+              flexDirection: "row",
+              gap: 8,
+              borderRadius: 32,
+            }}
+            onPress={() => setColor(color === '#000' ? '#0042DC' : '#000')}
+          >
+            <Palette size={32}/>
+            <Text style={{fontSize: 18}}>Color</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderColor: '#EEE',
+              borderWidth: 2,
+              padding: 8,
+              paddingHorizontal: 16,
+              flexDirection: "row",
+              gap: 8,
+              borderRadius: 32,
+            }}
+            onPress={() => setOpacity(opacity === 1 ? 0.5 : 1)}
+          >
+            <Pen size={32}/>
+            <Text style={{fontSize: 18}}>Opacity</Text>
+          </TouchableOpacity>
+        </ScrollView>
+      </View>
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  flex: {
-    flex: 1,
-  },
-  container: {
-    flex: 3,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 10,
-    padding: 10,
-    paddingTop: 80,
-  },
-  card: {
-    flexDirection: 'row',
-    backgroundColor: '#f0f0f0',
-    padding: 10,
-    borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App() {
+  return (
+    <SafeAreaProvider>
+      <PapiconsExample />
+    </SafeAreaProvider>
+  );
+}
