@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+.icon-button {
+  position: relative;
+}
+
+.icon-button::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+}
+
+.icon-button:hover,
+.icon-button:focus-visible,
+.icon-button:active {
+  z-index: 1;
+}

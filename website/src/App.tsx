@@ -69,7 +69,7 @@ const SearchInput = ({
         placeholder="Search icons"
         value={value}
         onChange={onChange}
-        className="w-full px-6 h-14 text-xl bg-transparent focus:outline-none font-medium"
+        className="w-full px-7 h-15 text-xl bg-transparent focus:outline-none font-medium"
       />
     </div>
   );
@@ -98,7 +98,7 @@ const IconItem = ({ icon }: { icon: Icon }) => {
     <button
       type="button"
       onClick={handleCopy}
-      className="group aspect-square flex items-center justify-center rounded-2xl bg-white hover:shadow-md transition-all cursor-pointer border border-neutral-100 hover:border-neutral-400 active:shadow-lg active:scale-90"
+      className="icon-button group aspect-square flex items-center justify-center rounded-2xl bg-white hover:shadow-lg transition-all cursor-pointer hover:scale-110 border border-neutral-100 hover:border-neutral-400 active:shadow-md active:scale-100"
       aria-label={`Copy ${icon.name} SVG`}
       title={`Copy ${icon.name} SVG`}
     >
@@ -112,7 +112,7 @@ const IconRenderer = ({ src }: { src: string }) => {
     <img
       src={src}
       alt="icon"
-      className="w-9 aspect-square opacity-70 group-hover:opacity-95 group-hover:w-10 transition-all group-active:w-9"
+      className="w-9 aspect-square opacity-70 group-hover:opacity-100 group-hover:w-10 transition-all group-active:w-9"
     />
   );
 };
