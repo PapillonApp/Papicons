@@ -36,7 +36,10 @@ const normalizeForSearch = (value: string) =>
   value.toLowerCase().replace(/[^a-z0-9]+/g, '');
 
 const tokenizeForSearch = (value: string) =>
-  value.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+  value
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter(Boolean);
 
 function App() {
   const [query, setQuery] = useState('');
@@ -109,9 +112,13 @@ function App() {
           />
         </div>
 
-        <SearchInput value={query} onChange={(e) => setQuery(e.target.value)} />
-
-        <IconList icons={filteredIcons} />
+        <div className="min-h-screen gap-4 flex flex-col">
+          <SearchInput
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <IconList icons={filteredIcons} />
+        </div>
 
         <Toaster />
       </div>
