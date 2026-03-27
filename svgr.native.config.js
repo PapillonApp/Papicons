@@ -1,9 +1,9 @@
 module.exports = {
-  template: require('./dist/scripts/exportTemplate'),
+  template: require('./dist/scripts/exportTemplate.native'),
   typescript: true,
   native: true,
   jsxRuntime: 'classic',
-  outDir: './src/icons',
+  outDir: './src/icons-native',
   dimensions: true,
   svgoConfig: {
     plugins: [
@@ -11,11 +11,11 @@ module.exports = {
         name: 'preset-default',
         params: {
           overrides: {
-            removeViewBox: false,
-            removeDimensions: true,
+            removeViewBox: false
           },
         },
       },
+      'removeDimensions',
       {
         name: 'removeAttrs',
         params: {
@@ -27,7 +27,7 @@ module.exports = {
         params: {
           xmlns: true,
         },
-      }
+      },
     ],
-  }
+  },
 };

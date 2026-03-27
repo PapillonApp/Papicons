@@ -1,11 +1,12 @@
 {
   "name": "@getpapillon/papicons",
-  "version": "0.1.14",
-  "description": "A butterfly icon set for React Native",
+  "version": "0.2.0",
+  "description": "A butterfly icon set for React and React Native",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
     ".": {
+      "react-native": "./lib/module/index.native.js",
       "source": "./src/index.tsx",
       "types": "./lib/typescript/src/index.d.ts",
       "default": "./lib/module/index.js"
@@ -19,15 +20,16 @@
   "scripts": {
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
-    "clean": "del-cli lib",
-    "build": "bob build",
-    "icons:build": "tsc scripts/exportTemplate.ts --outDir dist/scripts && tsc scripts/indexTemplate.ts --outDir dist/scripts && mkdir -p src/icons && npx @svgr/cli --config-file svgr.config.js --index-template ./dist/scripts/indexTemplate ./icons",
-    "icons:clean": "rm -rf src/icons"
+    "clean": "npm run icons:clean && del-cli lib",
+    "build": "npm run icons:build && bob build",
+    "icons:build": "tsc scripts/exportTemplate.native.ts --outDir dist/scripts && tsc scripts/exportTemplate.web.ts --outDir dist/scripts && tsc scripts/indexTemplate.ts --outDir dist/scripts && mkdir -p src/icons-native src/icons-web && npx @svgr/cli --config-file svgr.native.config.js --index-template ./dist/scripts/indexTemplate ./icons && npx @svgr/cli --config-file svgr.web.config.js --index-template ./dist/scripts/indexTemplate ./icons",
+    "icons:clean": "rm -rf src/icons-native src/icons-web"
   },
   "keywords": [
     "react-native",
     "icons",
-    "svg"
+    "svg",
+    "react"
   ],
   "repository": {
     "type": "git",
@@ -71,7 +73,8 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-svg": "*"
   },
   "workspaces": [
     "example"
@@ -108,5 +111,14 @@
   },
   "dependencies": {
     "react-native-svg": "^15.12.0"
+  },
+  "react-native": "./lib/module/index.native.js",
+  "peerDependenciesMeta": {
+    "react-native": {
+      "optional": true
+    },
+    "react-native-svg": {
+      "optional": true
+    }
   }
 }
