@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import './style.css';
 import PapiconsLogotype from './icons/PapiconsLogotype';
 import toast, { Toaster } from 'react-hot-toast';
+import { AnimatePresence, motion } from 'motion/react';
 
 type IconFile = {
   default: string;
@@ -31,19 +32,35 @@ const icons = Object.entries(iconModules)
   .sort((a, b) => a.name.localeCompare(b.name))
   .filter((icon) => !icon.name.startsWith('private_'));
 
+const normalizeForSearch = (value: string) =>
+  value.toLowerCase().replace(/[^a-z0-9]+/g, '');
+
+const tokenizeForSearch = (value: string) =>
+  value.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+
 function App() {
   const [query, setQuery] = useState('');
 
   const filteredIcons = useMemo(() => {
-    const normalizedQuery = query.trim().toLowerCase().replace(/\s+/g, '-');
+    const normalizedQuery = normalizeForSearch(query);
+    const queryTokens = tokenizeForSearch(query);
 
-    if (!normalizedQuery) {
+    if (!normalizedQuery && queryTokens.length === 0) {
       return icons;
     }
 
-    return icons.filter((icon) =>
-      icon.name.toLowerCase().includes(normalizedQuery)
-    );
+    return icons.filter((icon) => {
+      const normalizedName = normalizeForSearch(icon.name);
+      if (normalizedQuery && normalizedName.includes(normalizedQuery)) {
+        return true;
+      }
+
+      if (queryTokens.length === 0) {
+        return false;
+      }
+
+      return queryTokens.every((token) => normalizedName.includes(token));
+    });
   }, [query]);
 
   return (
@@ -124,11 +141,16 @@ const SearchInput = ({
 
 const IconList = ({ icons }: { icons: Icon[] }) => {
   return (
-    <div className="grid gap-3 grid-cols-[repeat(auto-fill,minmax(72px,1fr))]">
-      {icons.map((icon) => (
-        <IconItem key={icon.name} icon={icon} />
-      ))}
-    </div>
+    <motion.div
+      layout
+      className="grid gap-3 grid-cols-[repeat(auto-fill,minmax(72px,1fr))]"
+    >
+      <AnimatePresence mode="sync" initial={false}>
+        {icons.map((icon) => (
+          <IconItem key={icon.name} icon={icon} />
+        ))}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 
@@ -144,17 +166,30 @@ const IconItem = ({ icon }: { icon: Icon }) => {
   };
 
   return (
-    <button
-      type="button"
-      onClick={handleCopy}
-      className="icon-button group aspect-square flex items-center justify-center overflow-visible rounded-2xl bg-white hover:shadow-lg transition-all cursor-pointer hover:scale-110 border border-neutral-100 hover:border-neutral-400 active:shadow-md active:scale-100"
-      aria-label={`Copy ${icon.name} SVG`}
+    <motion.div
+      layout
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.8 }}
+      transition={{
+        layout: { duration: 0.4, type: 'spring', bounce: 0.2 },
+        opacity: { duration: 0.1, ease: 'easeOut' },
+        scale: { duration: 0.1, ease: 'easeOut' },
+      }}
+      className="w-full h-full"
     >
-      <IconRenderer src={icon.src} />
-      <span className="pointer-events-none absolute -top-2 left-1/2 z-100 w-max -translate-x-1/2  whitespace-nowrap rounded-full bg-neutral-900 px-2 py-1 text-sm font-medium leading-none text-white opacity-0 transition-all group-hover:opacity-100 group-focus-visible:opacity-100 group-hover:delay-50 duration-200 scale-80 group-hover:scale-100 -translate-y-4 group-hover:-translate-y-full">
-        {icon.name}
-      </span>
-    </button>
+      <button
+        type="button"
+        onClick={handleCopy}
+        className="w-full h-full icon-button group aspect-square flex items-center justify-center overflow-visible rounded-2xl bg-white hover:shadow-lg transition-all cursor-pointer hover:scale-110 border border-neutral-100 hover:border-neutral-400 active:shadow-md active:scale-100"
+        aria-label={`Copy ${icon.name} SVG`}
+      >
+        <IconRenderer src={icon.src} />
+        <span className="pointer-events-none absolute -top-2 left-1/2 z-100 w-max -translate-x-1/2  whitespace-nowrap rounded-full bg-neutral-900 px-2 py-1 text-sm font-medium leading-none text-white opacity-0 transition-all group-hover:opacity-100 group-focus-visible:opacity-100 group-hover:delay-50 duration-200 scale-80 group-hover:scale-100 -translate-y-4 group-hover:-translate-y-full">
+          {icon.name}
+        </span>
+      </button>
+    </motion.div>
   );
 };
 
