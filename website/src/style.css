@@ -1,5 +1,45 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Papillon-Variable";
+  src: url("/fonts/SNPro/SNPro-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+}
+
+@font-face {
+  font-family: "Papillon";
+  src: url("/fonts/SNPro/SNPro-Light.woff2") format("woff2");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Papillon";
+  src: url("/fonts/SNPro/SNPro-Regular.woff2") format("woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Papillon";
+  src: url("/fonts/SNPro/SNPro-Medium.woff2") format("woff2");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Papillon";
+  src: url("/fonts/SNPro/SNPro-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Papillon";
+  src: url("/fonts/SNPro/SNPro-Bold.woff2") format("woff2");
+  font-weight: 700;
+}
+
+* {
+  font-family: "Papillon", sans-serif;
+}
+
 .icon-button {
   position: relative;
 }
