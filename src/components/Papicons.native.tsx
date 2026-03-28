@@ -1,20 +1,19 @@
 import React from 'react';
-import * as Icons from '../icons-web';
+import type { SvgProps } from 'react-native-svg';
+import * as Icons from '../icons-native';
 import type { PapiconsProps } from '../types/PapiconsProps';
-import { IconNames } from '../icons-web';
-
-type WebSvgProps = React.SVGProps<SVGSVGElement>;
+import { IconNames } from '../icons-native';
 
 function Papicons({
   name,
   ...props
 }: {
   name: IconNames | string;
-} & WebSvgProps & PapiconsProps): React.JSX.Element {
+} & SvgProps & PapiconsProps): React.JSX.Element {
   if (name) {
     const IconComponent = Object.entries(Icons).find(
       ([key]) => key.toLowerCase() === name.toLowerCase()
-    )?.[1] as React.ComponentType<WebSvgProps>;
+    )?.[1] as React.ComponentType<SvgProps>;
 
     if (IconComponent) {
       return <IconComponent {...props} />;
