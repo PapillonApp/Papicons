@@ -1,57 +1,53 @@
-name: Deploy
+name: Deploy static content to Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: ['main']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
 
 jobs:
-  build:
-    name: Build
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: website
-
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Setup Node
+      - name: Set up Node
         uses: actions/setup-node@v6
         with:
-          node-version: 24
+          node-version: lts/*
           cache: npm
           cache-dependency-path: website/package-lock.json
 
       - name: Install dependencies
+        working-directory: ./website
         run: npm ci
 
-      - name: Build project
+      - name: Build
+        working-directory: ./website
         run: npm run build
 
-      - name: Upload production-ready build files
-        uses: actions/upload-artifact@v7
-        with:
-          name: production-files
-          path: website/dist
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v8
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
         with:
-          name: production-files
-          path: ./dist
+          path: ./website/dist
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+        id: deployment
+        uses: actions/deploy-pages@v4
