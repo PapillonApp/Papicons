@@ -29,8 +29,35 @@ export default function IconItem({ icon, copyMode }: IconItemProps) {
   const copyValue = useMemo(() => getCopyValue(icon, copyMode), [icon, copyMode]);
   const modeLabel = copyModeLabel[copyMode];
 
+  const copyText = async (value: string) => {
+    if (typeof navigator !== 'undefined' && navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(value);
+      return;
+    }
+
+    if (typeof document === 'undefined') {
+      throw new Error('Clipboard not available');
+    }
+
+    const textarea = document.createElement('textarea');
+    textarea.value = value;
+    textarea.setAttribute('readonly', '');
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    textarea.style.pointerEvents = 'none';
+    document.body.appendChild(textarea);
+    textarea.select();
+
+    const copied = document.execCommand('copy');
+    document.body.removeChild(textarea);
+
+    if (!copied) {
+      throw new Error('Copy command failed');
+    }
+  };
+
   const handleCopy = async () => {
-    toast.promise(navigator.clipboard.writeText(copyValue), {
+    toast.promise(copyText(copyValue), {
       loading: `Copying ${modeLabel} to clipboard...`,
       success: `${copyMode === 'name' ? icon.name : modeLabel} copied to clipboard!`,
       error: 'Failed to copy to clipboard.',

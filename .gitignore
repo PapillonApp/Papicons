@@ -86,3 +86,5 @@ android/generated
 nitrogen/
 
 website/dist/
+src/icons-native
+src/icons-web
