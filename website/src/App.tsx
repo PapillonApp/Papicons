@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import './style.css';
 import CopyModeSelector from './components/CopyModeSelector';
@@ -14,6 +14,28 @@ import { normalizeForSearch, tokenizeForSearch } from './utils/search';
 export default function App() {
   const [query, setQuery] = useState('');
   const [copyMode, setCopyMode] = useState<CopyMode>('svg');
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window === 'undefined') {
+      return false;
+    }
+    const storedTheme = window.localStorage.getItem('papicons-theme');
+    if (storedTheme === 'dark') {
+      return true;
+    }
+    if (storedTheme === 'light') {
+      return false;
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.toggle('dark', isDarkMode);
+    window.localStorage.setItem(
+      'papicons-theme',
+      isDarkMode ? 'dark' : 'light'
+    );
+  }, [isDarkMode]);
 
   const filteredIcons = useMemo(() => {
     const normalizedQuery = normalizeForSearch(query);
@@ -39,9 +61,12 @@ export default function App() {
   }, [query]);
 
   return (
-    <main className="flex justify-center bg-[#f0f2f9] min-h-screen">
+    <main className="flex justify-center bg-[#f0f2f9] dark:bg-[#0d1220] text-[#071833] dark:text-[#e7ebff] min-h-screen transition-colors">
       <div className="w-full max-w-5xl m-8 md:m-16 gap-2 md:gap-6 flex flex-col">
-        <Header />
+        <Header
+          isDarkMode={isDarkMode}
+          onToggleDarkMode={() => setIsDarkMode((value) => !value)}
+        />
         <Hero />
 
         <div className="min-h-screen gap-4 flex flex-col">

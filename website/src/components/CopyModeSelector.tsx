@@ -15,7 +15,7 @@ export default function CopyModeSelector({
   const activeMode = copyModes.find((value) => value.value === mode);
 
   return (
-    <div className="w-60 md:w-100 flex items-center gap-4 bg-[#e1e4ee] rounded-full transition-all mb-6 md:mb-0 px-5">
+    <div className="w-60 md:w-100 flex items-center gap-4 bg-[#e1e4ee] dark:bg-[#1b2338] rounded-full transition-all mb-6 md:mb-0 px-5">
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.div
           className="w-6 opacity-60"

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @font-face {
   font-family: "Papillon-Variable";
@@ -38,6 +39,14 @@
 
 * {
   font-family: "Papillon", sans-serif;
+}
+
+:root {
+  --icon-color: #071833;
+}
+
+.dark {
+  --icon-color: #e7ebff;
 }
 
 html,

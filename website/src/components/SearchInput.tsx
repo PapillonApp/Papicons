@@ -16,8 +16,8 @@ export default function SearchInput({
   numberOfIcons = 1,
 }: SearchInputProps) {
   return (
-    <div className="flex items-center gap-4 bg-[#e1e4ee] rounded-full transition-all mb-6 md:mb-0 px-5 w-full">
-      <div className="w-6 opacity-60">
+    <div className="flex items-center gap-4 bg-[#e1e4ee] dark:bg-[#1b2338] rounded-full transition-all mb-6 md:mb-0 px-5 w-full">
+      <div className="w-6 opacity-60 dark:opacity-70">
         <Papicons name="search" size={28} />
       </div>
 
@@ -26,7 +26,7 @@ export default function SearchInput({
         placeholder={`Search for ${numberOfIcons} icons...`}
         value={value}
         onChange={onChange}
-        className="w-full h-15 text-xl bg-transparent focus:outline-none font-medium"
+        className="w-full h-15 text-xl bg-transparent focus:outline-none font-medium placeholder:text-neutral-500 dark:placeholder:text-neutral-400"
       />
 
       <AnimatePresence mode="popLayout" initial={false}>
@@ -39,7 +39,7 @@ export default function SearchInput({
             <motion.button
               type="button"
               onClick={onClear}
-              className="p-2 rounded-full hover:bg-neutral-300 transition-all"
+              className="p-2 rounded-full hover:bg-neutral-300 dark:hover:bg-[#2a3554] transition-all"
               aria-label="Clear search input"
             >
               <Papicons name="cross" />

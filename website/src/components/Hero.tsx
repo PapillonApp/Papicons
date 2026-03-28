@@ -1,5 +1,6 @@
 import { Papicons } from '@getpapillon/papicons';
 import { useState } from 'react';
+
 export default function Hero() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const videoId = 'ob53CHx9kTs';
@@ -11,13 +12,13 @@ export default function Hero() {
         <h1 className="text-5xl tracking-tight font-bold text-left">
           Open, simple, human icons for everyone.
         </h1>
-        <p className="text-xl font-medium text-left text-neutral-700">
+        <p className="text-xl font-medium text-left text-neutral-700 dark:text-neutral-300">
           Papicons is a free and open source icon library designed for everyone,
           focused on simplicity and accessibility.
         </p>
         <a
           href="https://github.com/PapillonApp/Papicons/blob/react-native/LICENSE"
-          className="text-md -mt-1 leading-relaxed text-left text-neutral-400 hover:underline"
+          className="text-md -mt-1 leading-relaxed text-left text-neutral-400 dark:text-neutral-500 hover:underline"
         >
           Papicons is an open-source project under the MIT license.
         </a>
@@ -33,7 +34,7 @@ export default function Hero() {
 
           <a
             href="https://docs.papillon.bzh/papicons/components/papicons"
-            className="mt-4 h-12 inline-flex items-center gap-3 rounded-full text-lg bg-blue-700/10 hover:bg-blue-800/20 transition-colors text-blue-700 font-medium px-5 py-3"
+            className="mt-4 h-12 inline-flex items-center gap-3 rounded-full text-lg bg-blue-700/10 hover:bg-blue-800/20 dark:bg-blue-700/25 dark:hover:bg-blue-700/35 transition-colors text-blue-700 dark:text-blue-200 font-medium px-5 py-3"
           >
             <Papicons name="newspaper" size={24} />
             Docs

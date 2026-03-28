@@ -80,7 +80,7 @@ export default function IconItem({ icon, copyMode }: IconItemProps) {
       <button
         type="button"
         onClick={handleCopy}
-        className="w-full h-full icon-button group aspect-square flex items-center justify-center overflow-visible rounded-2xl bg-white hover:shadow-lg transition-all cursor-pointer hover:scale-110 border border-neutral-100 hover:border-neutral-400 active:shadow-md active:scale-100"
+        className="w-full h-full icon-button group aspect-square flex items-center justify-center overflow-visible rounded-2xl bg-white dark:bg-[#182039] hover:shadow-lg transition-all cursor-pointer hover:scale-110 border border-neutral-100 dark:border-[#2b3553] hover:border-neutral-400 dark:hover:border-[#465785] active:shadow-md active:scale-100 text-[#071833] dark:text-[#e7ebff]"
         aria-label={`Copy ${icon.name} ${modeLabel}`}
       >
         <IconRenderer name={icon.name} />

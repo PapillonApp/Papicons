@@ -8,7 +8,7 @@ type IconRendererProps = {
 export default function IconRenderer({ name }: IconRendererProps) {
   return (
     <div className="aspect-square opacity-70 group-hover:opacity-100 transition-all">
-      <Papicons color="#071833" size={32} name={formatHyphenatedName(name)} />
+      <Papicons color="var(--icon-color)" size={32} name={formatHyphenatedName(name)} />
     </div>
   );
 }
