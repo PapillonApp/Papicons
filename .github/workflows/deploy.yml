@@ -30,13 +30,21 @@ jobs:
         with:
           node-version: lts/*
           cache: npm
-          cache-dependency-path: website/package-lock.json
+          cache-dependency-path: |
+            package-lock.json
+            website/package-lock.json
 
-      - name: Install dependencies
+      - name: Install package dependencies
+        run: npm ci
+
+      - name: Build icons package
+        run: npm run build
+
+      - name: Install website dependencies
         working-directory: ./website
         run: npm ci
 
-      - name: Build
+      - name: Build website
         working-directory: ./website
         run: npm run build
 
