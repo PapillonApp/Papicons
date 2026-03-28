@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@getpapillon/papicons": "^0.2.0-beta.1",
     "motion": "^12.38.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
