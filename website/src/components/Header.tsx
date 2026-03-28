@@ -3,7 +3,7 @@ import PapiconsPackageJSON from '../../../package.json';
 import { Papicons } from '@getpapillon/papicons';
 
 const links = [
-  { href: 'https://papillon.bzh', label: 'The Papillon Project' },
+  { href: 'https://papillon.bzh', label: 'App' },
   { href: 'https://docs.papillon.bzh/papicons', label: 'Docs' },
   { href: 'https://github.com/PapillonApp/Papicons', label: 'GitHub' },
 ];
